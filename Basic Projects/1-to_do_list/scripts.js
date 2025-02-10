@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const addButton = document.getElementById('add-button');
   const filterButtons = document.querySelectorAll('.filter-buttons button');
   const taskCount = document.getElementById('task-count');
-  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
   let filter = 'All';
 
   const saveTasks = () => {

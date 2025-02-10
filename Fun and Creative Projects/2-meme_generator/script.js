@@ -1,11 +1,11 @@
 (function (window, document) {
     CanvasRenderingContext2D.prototype.drawBreakingText = function (str, x, y, w, lh, method) {
-        var textSize = parseInt(this.font.replace(/\D/gi, ''));
-        var textParts = [];
-        var textPartsNo = 0;
-        var words = [];
-        var currLine = '';
-        var testLine = '';
+        let textSize = parseInt(this.font.replace(/\D/gi, ''));
+        let textParts = [];
+        let textPartsNo = 0;
+        let words = [];
+        let currLine = '';
+        let testLine = '';
         str = str || '';
         x = x || 0;
         y = y || 0;
@@ -16,15 +16,15 @@
         textParts = str.split('\n');
         textPartsNo = textParts.length;
 
-        for (var i = 0; i < textParts.length; i++) {
+        for (let i = 0; i < textParts.length; i++) {
             words[i] = textParts[i].split(' ');
         }
 
         textParts = [];
 
-        for (var i = 0; i < textPartsNo; i++) {
+        for (let i = 0; i < textPartsNo; i++) {
             currLine = '';
-            for (var j = 0; j < words[i].length; j++) {
+            for (let j = 0; j < words[i].length; j++) {
                 testLine = currLine + words[i][j] + ' ';
                 if (this.measureText(testLine).width > w && j > 0) {
                     textParts.push(currLine);
@@ -36,7 +36,7 @@
             textParts.push(currLine);
         }
 
-        for (var i = 0; i < textParts.length; i++) {
+        for (let i = 0; i < textParts.length; i++) {
             if (method === 'fill') {
                 this.fillText(textParts[i].trim(), x, y + (textSize * lh * i));
             } else if (method === 'stroke') {
@@ -53,18 +53,18 @@
     };
 })(window, document);
 
-var canvas = document.createElement('canvas');
-var canvasWrapper = document.getElementById('canvasWrapper');
+let canvas = document.createElement('canvas');
+let canvasWrapper = document.getElementById('canvasWrapper');
 canvasWrapper.appendChild(canvas);
 canvas.width = 500;
 canvas.height = 500;
-var ctx = canvas.getContext('2d');
-var padding = 15;
-var textTop = 'I use coding torque to learn';
-var textBottom = 'web development by creating projects';
-var textSizeTop = 10;
-var textSizeBottom = 10;
-var image = new Image();
+let ctx = canvas.getContext('2d');
+let padding = 15;
+let textTop = 'I use coding torque to learn';
+let textBottom = 'web development by creating projects';
+let textSizeTop = 10;
+let textSizeBottom = 10;
+let image = new Image();
 
 // Setting the crossOrigin attribute
 image.crossOrigin = "Anonymous";
@@ -79,7 +79,7 @@ document.getElementById('imgURL').oninput = function () {
 };
 
 document.getElementById('imgFile').onchange = function () {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function () {
         image.src = reader.result;
     };
@@ -118,13 +118,13 @@ document.getElementById('trueSize').onchange = function () {
 
 document.getElementById('export').onclick = function () {
     try {
-        var img = canvas.toDataURL('image/png');
-        var link = document.createElement("a");
+        let img = canvas.toDataURL('image/png');
+        let link = document.createElement("a");
         link.download = 'My_Meme.png';
         link.href = img;
         link.click();
 
-        var win = window.open('', '_blank');
+        let win = window.open('', '_blank');
         win.document.write('<img style="box-shadow: 0 0 1em 0 dimgrey;" src="' + img + '"/>');
         win.document.write('<h1 style="font-family: Helvetica; font-weight: 300">Right Click > Save As<h1>');
         win.document.body.style.padding = '1em';
