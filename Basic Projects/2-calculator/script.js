@@ -1,5 +1,5 @@
 const display = document.getElementById('display');
-let displayValue = '';
+var displayValue = '';
 
 function appendNumber(number) {
     if (displayValue === '0' && number !== '.') {
