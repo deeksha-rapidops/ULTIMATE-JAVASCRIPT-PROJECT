@@ -1,7 +1,7 @@
 const expenseform = document.getElementById('expenseform');
 const expenselist = document.getElementById('expenselist');
 const totalamountElement = document.getElementById('totalamount');
-let total = 0;
+var total = 0;
 
 expenseform.addEventListener('submit', function(event) {
     event.preventDefault();
